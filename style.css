@@ -93,11 +93,12 @@ body {
     padding-left: 0.5rem;
     border-left: 0.2rem solid var(--secondary-color);
     margin-left: 1.5rem;
-summary:hover {
+}
+summary {
     cursor: pointer;
+    padding: 1rem;
 }
     
-}
 #main-footer {
     background-color: var(--secondary-color);
     text-align: center;
