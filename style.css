@@ -31,6 +31,9 @@ body {
     a {
     text-decoration: none;
     color: inherit;
+    padding: 5px 10px;
+    border: 1px solid var(--commun-color);
+    border-radius: 12px;
     }
 }
 .nav-item:hover {
