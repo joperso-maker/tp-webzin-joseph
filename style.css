@@ -2,6 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    line-height: 1.4;
 }
 :root {
     --background-color:#669bbc;
@@ -43,6 +44,7 @@ body {
 #main-content {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 .post-card {
     img {
@@ -54,7 +56,7 @@ body {
     border: 1px solid var(--secondary-color);
     background-color: var(--commun-color);
     border-radius: 8px;
-    box-shadow: 0px 0px 5px var(--secondary-color);
+    box-shadow: 0px 0px 3px var(--secondary-color);
     padding : 20px 20px;
     figcaption {
         text-align: right;
@@ -98,7 +100,6 @@ body {
     margin-left: 1.5rem;
 }
 summary {
-    cursor: pointer;
     padding: 1rem;
 }
     
@@ -109,4 +110,166 @@ summary {
 }
 .contact-info {
     padding: 2rem;
+}
+
+/***************************************************
+CSS du 23/11 --> pseudoclass/element et animations
+****************************************************/
+
+.nav-item a {
+    transition: backgound-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    padding-bottom: 3px;
+    position: relative;
+}
+
+.nav-item a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-in-out;    
+}
+.nav-item a:hover {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    padding: 0.5rem 0.7rem;
+    border-radius: 999px;
+}
+.nav-item a:hover::after {
+     width: 100%;
+}
+.nav-item a:active {
+    opacity: 0.7;
+}
+.nav-item a:focus {
+    outline: 2px solid var(--accent-color);
+}
+
+.post-card footer li:last-child {
+    background-color: var(--secondary-color);
+    color: var(--commun-color);
+    border-radius: 8px;
+    padding: 0.2rem 0.5rem;
+}
+.post-card footer li:not(:last-child) {
+    background: var(--background-color);
+    color: #d7d7d7;
+    border: 1px solid var(--secondary-color);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
+}
+tr, details summary {
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; 
+
+}
+.data-table tr:hover:not(:first-child) {
+    opacity: 0.7;
+    background: #c9c9c9;
+}
+summary:hover {
+    cursor: pointer;
+}
+details[open] summary {
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+#hero-section p:first-of-type::first-letter {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+::selection {
+    background-color: var(--primary-color);
+    color: var(--commun-color);
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+.post-card footer a::after {
+    content: " →";
+}
+summary::marker {
+    color: var(--primary-color);
+}
+.post-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.post-thumbnail {
+    overflow: hidden;
+    img {
+        transition: transform 0.4s ease;
+    }
+}
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 8px var(--secondary-color);
+    .post-thumbnail img {
+        transform: scale(1.05);
+    }
+}
+
+canvas, .promo-video {
+    max-width: 100%;
+    height: auto;
+}
+img {
+    max-width:100%;
+}
+
+
+@media screen and (max-width: 900px) {
+    #main-content {
+        padding: 0 20px;
+    }
+    #main-header {
+        padding: 1.5rem;
+    }
+    .post-card {
+        width: 47%;
+    }
+}
+
+@media (max-width:600px) {
+    .nav-item {
+        display: block;
+        margin: 8px 0;
+    }
+    .post-card {
+        width:100%;
+        margin: 15px 0;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    p {
+        font-size: 0.9rem;
+    }
+    .data-table {
+        font-size: 0.85rem;
+        th, td {
+        padding: 0.8rem, 0.2rem;
+        }
+    }
+}
+
+@media print {
+    .navbar, .promo-video, .podcast-player, #interactive-zone {
+        display: none;
+    }
 }
